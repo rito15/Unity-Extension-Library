@@ -1,0 +1,16 @@
+{
+	"name" : "com.rito.unityextensionlibrary",
+	"version": "1.0.0",
+	"displayName" :"Unity Extension Library",
+	"description" :"Unity Library for Scripting Convenience",
+	"unity": "2019.4",
+	"dependencies": {},
+	"keywords": ["rito","unity","library"],
+	"author":
+	{
+		"name":"Rito",
+		"email":"ghdtkals15@gmail.com",
+		"url":"https://github.com/rito15"
+	},
+	"category": "Unity"
+}
