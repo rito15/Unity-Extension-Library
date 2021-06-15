@@ -16,15 +16,15 @@ namespace Rito.Extensions.Debugs
     /// <summary> 
     /// [TestCompleted] 체크
     /// </summary>
-    public class TestComopletionCheckerWindow : EditorWindow
+    public class TestCompletionCheckerWindow : EditorWindow
     {
         private GUIStyle boldLabel;
-        private static TestComopletionCheckerWindow window;
+        private static TestCompletionCheckerWindow window;
 
         [MenuItem("Window/Rito/Extensions/Checker Window")]
         private static void Open()
         {
-            window = (TestComopletionCheckerWindow)GetWindow(typeof(TestComopletionCheckerWindow));
+            window = (TestCompletionCheckerWindow)GetWindow(typeof(TestCompletionCheckerWindow));
             window.Show();
 
             // 윈도우 타이틀 지정
