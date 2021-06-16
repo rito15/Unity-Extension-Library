@@ -16,12 +16,11 @@ namespace Rito.Extensions
 {
     public static class GameObjectExtension
     {
-        [TestCompleted(2021, 06, 15)]
-        public static T GetOrAddComponent<T>(GameObject @this)
+        [TestCompleted(2021, 06, 16)]
+        public static T GetOrAddComponent<T>(this GameObject @this)
             where T : Component
         {
-            var component = @this.GetComponent<T>();
-            if (component == null)
+            if (!@this.TryGetComponent(out T component))
             {
                 component = @this.AddComponent<T>();
             }

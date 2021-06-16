@@ -35,11 +35,11 @@ namespace Rito.Extensions
         ***********************************************************************/
         #region .
 
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 디버그 로그 창에 배열의 모든 내용 출력
         /// <para/> seperator : 각 요소를 구분할 구분자(기본 : 공백 1칸)
         /// <para/> showIndex : 각 요소 앞에 [n] 표시할지 여부
         /// </summary>
+        [TestCompleted(2021, 06, 15)]
         [Conditional(ConditionalDebugKeyword)]
         public static void LogAllElements<T>(this IEnumerable<T> @this, string seperator = " ", bool showIndex = false)
         {
@@ -61,8 +61,8 @@ namespace Rito.Extensions
         *                               Clone
         ***********************************************************************/
         #region .
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 동일하게 복제 </summary>
+        [TestCompleted(2021, 06, 15)]
         public static T[] Ex_Clone<T>(this T[] @this)
         {
             T[] copy = new T[@this.Length];
@@ -70,21 +70,21 @@ namespace Rito.Extensions
             return copy;
         }
 
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 동일하게 복제 </summary>
+        [TestCompleted(2021, 06, 15)]
         public static List<T> Ex_Clone<T>(this List<T> @this)
         {
             return new List<T>(@this);
         }
-        
+
         #endregion
         /***********************************************************************
         *                           Random, Shuffle
         ***********************************************************************/
         #region .
 
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 리스트 내에서 무작위 요소 뽑아 리턴 </summary>
+        [TestCompleted(2021, 06, 15)]
         public static T GetRandomElement<T>(this IList<T> @this)
         {
             if(@this.Count == 0) return default;
@@ -94,8 +94,8 @@ namespace Rito.Extensions
             return @this[ranNum];
         }
 
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 배열 내에서 무작위 요소 뽑아 리턴 </summary>
+        [TestCompleted(2021, 06, 15)]
         public static T GetRandomElement<T>(this T[] @this)
         {
             if(@this.Length == 0) return default;
@@ -105,8 +105,8 @@ namespace Rito.Extensions
             return @this[ranNum];
         }
 
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 리스트 내에서 무작위 요소들을 지정 개수만큼 중복되지 않게 뽑아 리스트로 리턴 </summary>
+        [TestCompleted(2021, 06, 15)]
         public static List<T> GetRandomElements<T>(this IList<T> @this, int count)
         {
             int len = @this.Count;
@@ -141,8 +141,8 @@ namespace Rito.Extensions
             return ranList;
         }
 
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 배열 내에서 무작위 요소들을 지정 개수만큼 중복되지 않게 뽑아 리스트로 리턴 </summary>
+        [TestCompleted(2021, 06, 15)]
         public static T[] GetRandomElements<T>(this T[] @this, int count)
         {
             int len = @this.Length;
@@ -178,8 +178,8 @@ namespace Rito.Extensions
             return ranArray;
         }
 
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 리스트의 내용을 무작위로 섞기 (Fisher-Yates shuffle 알고리즘) </summary>
+        [TestCompleted(2021, 06, 15)]
         public static List<T> Shuffle<T>(this List<T> @this)
         {
             // Fisher-Yates shuffle 알고리즘
@@ -202,8 +202,8 @@ namespace Rito.Extensions
             return @this;
         }
 
-        [TestCompleted(2021, 06, 15)]
         /// <summary> 배열의 내용을 무작위로 섞기 (Fisher-Yates shuffle 알고리즘) </summary>
+        [TestCompleted(2021, 06, 15)]
         public static T[] Shuffle<T>(this T[] @this)
         {
             int n = @this.Length;

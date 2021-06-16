@@ -34,7 +34,7 @@ namespace Rito.Extensions.Debugs
         private void OnEnable()
         {
             if (window == null)
-                Open();
+                window = this;
 
             FindAllExtensionMethods();
         }

@@ -30,6 +30,7 @@ namespace Rito.Extensions
         ***********************************************************************/
         #region .
         /// <summary> 조상이 몇 명인지 깊이 구하기 </summary>
+        [TestCompleted(2021, 06, 16)]
         public static int GetDepth(this Transform @this)
         {
             int depth = 0;
@@ -42,24 +43,55 @@ namespace Rito.Extensions
             return depth;
         }
 
+        /// <summary>
+        /// 모든 자손 트랜스폼들 목록 가져오기(비활성화된 트랜스폼 포함)
+        /// <para/> - includeSelf : 본인 트랜스폼 포함
+        /// </summary>
+        [TestCompleted(2021, 06, 16)]
+        public static List<Transform> GetAllDescendants(this Transform @this, bool includeSelf = false)
+        {
+            List<Transform> trList = new List<Transform>(@this.childCount);
+            if (includeSelf)
+                trList.Add(@this);
+
+            return GetTransformsRecursively(@this, trList);
+        }
+
+        private static List<Transform> GetTransformsRecursively(Transform tr, List<Transform> list)
+        {
+            int count = tr.childCount;
+
+            for (int i = 0; i < count; i++)
+            {
+                Transform ctr = tr.GetChild(i);
+                list.Add(ctr);
+                GetTransformsRecursively(ctr, list);
+            }
+            return list;
+        }
+
         #endregion
         /***********************************************************************
         *                       Transform Array Extensions
         ***********************************************************************/
         #region .
-        
+        private static readonly HashSet<Transform> sameParentSet = new HashSet<Transform>();
+
         /// <summary> 모두 같은 부모 아래 있는지 검사 </summary>
+        [TestCompleted(2021, 06, 16)]
         public static bool HasSameParent(this Transform[] transforms)
         {
-            List<string> parentIdList = new List<string>();
-            foreach (var activeTr in transforms)
+            if (transforms == null || transforms.Length == 0)
+                return false;
+
+            sameParentSet.Clear();
+            foreach (var tr in transforms)
             {
-                string id = "None";
-                if (activeTr.parent != null) id = activeTr.parent.GetInstanceID().ToString();
-                if (!parentIdList.Contains(id)) parentIdList.Add(id);
+                if(tr != null)
+                    sameParentSet.Add(tr.parent);
             }
 
-            return parentIdList.Count <= 1;
+            return sameParentSet.Count == 1;
         }
 
         #endregion

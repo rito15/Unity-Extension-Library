@@ -16,16 +16,31 @@ namespace Rito.Extensions
 {
     public static class ComponentExtension
     {
-        public static T GetOrAddComponent<T>(Component @this)
+        [TestCompleted(2021, 06, 16)]
+        public static T GetOrAddComponent<T>(this Component @this)
             where T : Component
         {
-            var component = @this.GetComponent<T>();
-            if (component == null)
+            if (!@this.TryGetComponent(out T component))
             {
                 component = @this.gameObject.AddComponent<T>();
             }
 
             return component;
+        }
+
+        /// <summary> 모든 후손 게임오브젝트(비활성화 포함)에서 컴포넌트 찾아오기 </summary>
+        [TestCompleted(2021, 06, 16)]
+        public static T GetComponentInDescendants<T>(this Component @this)
+            where T : Component
+        {
+            List<Transform> allDes = @this.transform.GetAllDescendants();
+            foreach (var tr in allDes)
+            {
+                if (tr.TryGetComponent(out T target))
+                    return target;
+            }
+
+            return null;
         }
     }
 }
