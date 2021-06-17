@@ -31,15 +31,18 @@ namespace Rito.Extensions
         *                               Range, Clamp
         ***********************************************************************/
         #region .
-        /// <summary> (min &lt;= value &lt;= max) </summary>
-        public static bool InclusiveRange(in this float value, in float min, in float max)
+        /// <summary> Inclusive Range (min &lt;= value &lt;= max) </summary>
+        [TestCompleted(2021, 06, 17)]
+        public static bool InRange(in this float value, in float min, in float max)
             => min <= value && value <= max;
 
-        /// <summary> (min &lt; value &lt; max) </summary>
-        public static bool ExclusiveRange(in this float value, in float min, in float max)
+        /// <summary> Exclusive Range (min &lt; value &lt; max) </summary>
+        [TestCompleted(2021, 06, 17)]
+        public static bool ExRange(in this float value, in float min, in float max)
             => min < value && value < max;
 
         /// <summary> 값의 범위 제한 </summary>
+        [TestCompleted(2021, 06, 17)]
         public static float Clamp(in this float value, in float min, in float max)
         {
             if (value < min) return min;
@@ -48,13 +51,15 @@ namespace Rito.Extensions
         }
 
         /// <summary> 값의 범위 제한 </summary>
+        [TestCompleted(2021, 06, 17)]
         public static void ClampRef(ref this float value, in float min, in float max)
         {
             if (value < min) value = min;
             if (value > max) value = max;
         }
 
-        /// <summary> 0 ~ 1 값으로 제한 </summary>
+        /// <summary> 0 ~ 1 범위로 제한 </summary>
+        [TestCompleted(2021, 06, 17)]
         public static float Saturate(in this float value)
         {
             if (value < 0f) return 0f;
@@ -62,7 +67,8 @@ namespace Rito.Extensions
             return value;
         }
 
-        /// <summary> 0 ~ 1 값으로 제한 </summary>
+        /// <summary> 0 ~ 1 범위로 제한 </summary>
+        [TestCompleted(2021, 06, 17)]
         public static void SaturateRef(ref this float value)
         {
             if (value < 0f) value = 0f;

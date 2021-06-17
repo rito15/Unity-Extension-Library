@@ -29,10 +29,12 @@ namespace Rito.Extensions
         ***********************************************************************/
         #region .
         /// <summary> (x1 * x2, y1 * y2, z1 * z2) </summary>
+        [TestCompleted(2021, 06, 17)]
         public static Vector3 Multiply(in this Vector3 @this, in Vector3 other)
             => new Vector3(@this.x * other.x, @this.y * other.y, @this.z * other.z);
 
         /// <summary> (x1 / x2, y1 / y2, z1 / z2) </summary>
+        [TestCompleted(2021, 06, 17)]
         public static Vector3 Divide(in this Vector3 @this, in Vector3 other)
             => new Vector3(@this.x / other.x, @this.y / other.y, @this.z / other.z);
 

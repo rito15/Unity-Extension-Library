@@ -14,6 +14,25 @@ namespace Rito.Extensions.Test
         public BoxCollider bCol;
         public SphereCollider descendantCollider;
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                for (int i = 0; i < 1000; i++)
+                {
+                    InfiniteLoopDetector.Run();
+                }
+                InfiniteLoopDetector.PrintCount();
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                while(true)
+                {
+                    InfiniteLoopDetector.Run();
+                }
+            }
+        }
+
 #if UNITY_EDITOR
         [UnityEditor.CustomEditor(typeof(Test_ComponentExtension))]
         private class CE : UnityEditor.Editor

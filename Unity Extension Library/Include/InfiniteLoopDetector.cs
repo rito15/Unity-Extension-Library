@@ -9,7 +9,7 @@ using System;
 namespace Rito.Extensions
 {
     /// <summary> 무한 루프 간편 방지 </summary>
-    public static class InfiniteLoopPreventer
+    public static class InfiniteLoopDetector
     {
         private static string prevPoint = "";
         private static int detectionCount = 0;
@@ -35,18 +35,13 @@ namespace Rito.Extensions
             prevPoint = currentPoint;
         }
 
-        [System.Diagnostics.Conditional("UNITY_EDITOR")]
-        private static void ResetCount()
-        {
-            detectionCount = 0;
-        }
-
 #if UNITY_EDITOR
-        static InfiniteLoopPreventer()
+        [UnityEditor.InitializeOnLoadMethod]
+        private static void Init()
         {
             UnityEditor.EditorApplication.update += () =>
             {
-                ResetCount();
+                detectionCount = 0;
             };
         }
 #endif
